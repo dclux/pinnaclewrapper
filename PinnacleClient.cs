@@ -194,6 +194,9 @@ namespace PinnacleWrapper
 
             var json = await response.Content.ReadAsStringAsync();
 
+            if (String.IsNullOrWhiteSpace(json))
+                return default(T);
+
             // deserialise json async
             return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(json));
         }
@@ -209,6 +212,10 @@ namespace PinnacleWrapper
             response.EnsureSuccessStatusCode();         // throw if web request failed
 
             var json = await response.Content.ReadAsStringAsync();
+
+
+            if (String.IsNullOrWhiteSpace(json))
+                return default(T);
 
             // deserialise async
             return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(json));

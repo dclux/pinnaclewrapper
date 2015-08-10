@@ -29,7 +29,7 @@ namespace PinnacleWrapper.Data
     public class FixturesEvent
     {
         [JsonProperty(PropertyName = "id")]
-        public int Id;
+        public long Id;
 
         [JsonProperty(PropertyName = "starts")]
         public DateTime Start;
